@@ -1,7 +1,6 @@
 public abstract class Palindrome {
 
     public static boolean verify(String s1) {
-        boolean answer = false;
         String[] strArray = s1.split(" ");
         for(int i = 0; i < strArray.length; i++) {
             StringBuilder sr = new StringBuilder(strArray[i].toLowerCase());
