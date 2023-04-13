@@ -21,10 +21,6 @@ public class Element {
 
     @Override
     public String toString() {
-        return ""+this.getValue();
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new Element(null, 5));
+        return Integer.toString(this.getValue());
     }
 }
