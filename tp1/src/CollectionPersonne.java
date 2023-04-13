@@ -1,12 +1,10 @@
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
 public class CollectionPersonne {
-    private ArrayList<Personne> cp;
-    private static Scanner s = new Scanner(System.in);
+    private final ArrayList<Personne> cp;
+    private static final Scanner s = new Scanner(System.in);
 
     public CollectionPersonne() {
         cp = new ArrayList<Personne>();
@@ -43,7 +41,7 @@ public class CollectionPersonne {
         } else {
             System.out.println("Vous voulez quitter? (o/n)");
 
-            System.out.println("Vous avez quitte");
+            System.out.println("Vous avez quitter");
         }
     }
 
@@ -53,10 +51,9 @@ public class CollectionPersonne {
 
     @Override
     public String toString() {
-        StringBuilder s = new StringBuilder("");
-        Iterator it = cp.iterator();
-        while (it.hasNext()) {
-            s.append(it.next());
+        StringBuilder s = new StringBuilder();
+        for (Personne personne : cp) {
+            s.append(personne);
             s.append("\n");
         }
         return s.toString();
