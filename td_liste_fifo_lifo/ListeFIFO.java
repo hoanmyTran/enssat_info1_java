@@ -24,6 +24,16 @@ public class ListeFIFO {
     public void afficherListe() {
         System.out.println(this);
     }
+
+    public int longueur() {
+        Element courant = this.debut;
+        int longueur = 0;
+        while(courant != null) {
+            courant = courant.getSuivant();
+            longueur++;
+        }
+        return longueur;
+    }
     @Override
     public String toString() {
         if (this.estVide()) {
