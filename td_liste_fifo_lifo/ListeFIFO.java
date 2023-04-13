@@ -21,6 +21,15 @@ public class ListeFIFO {
         }
     }
 
+    public Element depiler() {
+        Element e = null;
+        if (!estVide()) {
+            e = debut;
+            debut = debut.getSuivant();
+        }
+        return e;
+    }
+
     public void afficherListe() {
         System.out.println(this);
     }
