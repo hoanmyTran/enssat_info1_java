@@ -41,7 +41,7 @@ public class Personne {
 
     @Override
     public String toString() {
-        return (new StringBuilder().append(", ").append(this.getNom()).append(";").append(this.getPrenom()).append(";").append(this.getVilleNaissance()).append(";").append(this.getPaysNaissance())).toString();
+        return (new StringBuilder().append(this.getNom()).append(";").append(this.getPrenom()).append(";").append(this.getVilleNaissance()).append(";").append(this.getPaysNaissance())).toString();
     }
 
     @Override
