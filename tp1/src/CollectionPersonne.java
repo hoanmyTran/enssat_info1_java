@@ -1,34 +1,38 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class CollectionPersonne {
-    private final ArrayList<Personne> cp;
+    private final HashMap<String, Personne> cp;
     private static final Scanner s = new Scanner(System.in);
 
     public CollectionPersonne() {
-        cp = new ArrayList<Personne>();
+        cp = new HashMap<String, Personne>();
     }
 
-    public ArrayList<Personne> getCp() {
+    public HashMap<String ,Personne> getCp() {
         return cp;
     }
 
     public void ajouter(Personne p) {
-        if (!cp.contains(p)) {
-            cp.add(p);
+        String id = UUID.randomUUID().toString();
+        if (!cp.containsKey(id)) {
+            cp.put(id, p);
+        } else {
+            cp.put(UUID.randomUUID().toString(), p);
         }
     }
 
     public Personne findById(String id) {
-        return cp.stream()
-                .filter(personne -> id.equals(personne.getId()))
-                .findAny()
-                .orElse(null);
+        if (cp.containsKey(id)) {
+            return cp.get(id);
+        } else {
+            return null;
+        }
     }
 
     public void modifier() {
-        System.out.println("Saisir l'identifiant de la personne à modifier :");
+        /*System.out.println("Saisir l'identifiant de la personne à modifier :");
         String id = s.next();
         Personne p = this.findById(id);
         System.out.println("Personne choisie = "+p);
@@ -42,7 +46,7 @@ public class CollectionPersonne {
             System.out.println("Vous voulez quitter? (o/n)");
 
             System.out.println("Vous avez quitter");
-        }
+        }*/
     }
 
     public void afficherCollection() {
@@ -52,10 +56,11 @@ public class CollectionPersonne {
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
-        for (Personne personne : cp) {
-            s.append(personne);
-            s.append("\n");
-        }
+        cp.entrySet().stream()
+                .forEach(input -> s.append("Id = ")
+                        .append(input.getKey())
+                        .append(", ")
+                        .append(input.getValue()).append("\n"));
         return s.toString();
     }
 
@@ -71,6 +76,6 @@ public class CollectionPersonne {
         l.ajouter(p2);
         l.ajouter(p3);
         l.afficherCollection();
-        l.modifier();
+        //l.modifier();
     }
 }
