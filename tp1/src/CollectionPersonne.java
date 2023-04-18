@@ -32,24 +32,59 @@ public class CollectionPersonne {
     }
 
     public void modifier() {
-        /*System.out.println("Saisir l'identifiant de la personne à modifier :");
+        afficherCollection();
+        System.out.println("Saisir l'identifiant de la personne à modifier :");
+        boolean q = false;
         String id = s.next();
-        Personne p = this.findById(id);
-        System.out.println("Personne choisie = "+p);
-        System.out.println("Indiquer le numéro du champ que vous voulez modifier (1: nom, 2: prenom, ville et pays ne sont pas modifiable, tout autre nombre pour quitter): ");
-        int res = s.nextInt();
-        if (res == 1) {
-            System.out.println("Indiquer le nouveau nom : ");
-        } else if (res == 2) {
-            System.out.println("Indiquer le nouveau prenom : ");
-        } else {
-            System.out.println("Vous voulez quitter? (o/n)");
+        System.out.println("Personne choisie = "+cp.get(id));
+        do {
+            System.out.println("Indiquer le numéro du champ que vous voulez modifier (1: nom, 2: prenom, ville et pays ne sont pas modifiable, tout autre nombre pour quitter): ");
+            int res = s.nextInt();
+            s.nextLine();
+            switch(res) {
+                case 1:
+                    System.out.println("Indiquer le nouveau nom : ");
+                    cp.get(id).setNom(s.nextLine());
+                    System.out.println(cp.get(id));
+                    System.out.println("Modification du nom réussi!");
+                    break;
+                case 2:
+                    System.out.println("Indiquer le nouveau prénom : ");
+                    cp.get(id).setPrenom((s.nextLine()));
+                    System.out.println(cp.get(id));
+                    System.out.println("Modification du prénom réussi!");
+                    break;
+            }
+            System.out.println("Voulez-vous quitter ? (o/n)");
+            if (s.nextLine().equals("o")) {
+                q = true;
+            } else {
+                System.out.println("vous avez fait une erreur de saisie. Recommencez.");
+            }
+        } while(!q);
+        System.out.println("Vous avez quitter");
+        afficherCollection();
+    }
 
-            System.out.println("Vous avez quitter");
-        }*/
+    public void supprimer() {
+        String id;
+        afficherCollection();
+        do {
+            System.out.println("Saisir l'identifiant de la personne à supprimer : ");
+            id = s.nextLine();
+            if (!cp.containsKey(id)) {
+                System.out.println("Personne introuvable, veuillez recommencer !");
+            }
+        } while(!cp.containsKey(id));
+        cp.remove(id);
+        System.out.println("Personne (id = "+id+") supprimée");
+        afficherCollection();
     }
 
     public void afficherCollection() {
+        System.out.println("*************************");
+        System.out.println("********Personne*********");
+        System.out.println("*************************");
         System.out.println(this.toString());
     }
 
@@ -65,9 +100,6 @@ public class CollectionPersonne {
     }
 
     public static void main(String[] args) {
-        System.out.println("*************************");
-        System.out.println("********Personne*********");
-        System.out.println("*************************");
         Personne p1 = new Personne("Jean", "Dupond", "Lannion", "France");
         Personne p2 = new Personne("Jean", "Philippe", "Rennes", "France");
         Personne p3 = new Personne("Jean", "Dupond", "Lannion", "France");
@@ -75,7 +107,7 @@ public class CollectionPersonne {
         l.ajouter(p1);
         l.ajouter(p2);
         l.ajouter(p3);
-        l.afficherCollection();
-        //l.modifier();
+        l.modifier();
+        l.supprimer();
     }
 }
