@@ -1,22 +1,14 @@
-import java.util.UUID;
-
 public class Personne {
-    private final String id;
     private String nom;
     private String prenom;
     private final String paysNaissance;
     private final String villeNaissance;
 
     public Personne(String n, String p, String pn, String vn) {
-        id = UUID.randomUUID().toString();
         nom = n;
         prenom = p;
         paysNaissance = pn;
         villeNaissance = vn;
-    }
-
-    public String getId() {
-        return id;
     }
 
     public String getPrenom() {
@@ -49,8 +41,7 @@ public class Personne {
 
     @Override
     public String toString() {
-        StringBuilder s = new StringBuilder();
-        return s.append("Id = ").append(this.getId()).append(", ").append(this.getNom()).append(";").append(this.getPrenom()).append(";").append(this.getVilleNaissance()).append(";").append(this.getPaysNaissance()).toString();
+        return (new StringBuilder().append(", ").append(this.getNom()).append(";").append(this.getPrenom()).append(";").append(this.getVilleNaissance()).append(";").append(this.getPaysNaissance())).toString();
     }
 
     @Override
@@ -64,7 +55,7 @@ public class Personne {
 
         Personne p = (Personne) obj;
 
-        return this.getId().equals(p.getId()) && this.getNom().equals(p.getNom()) && this.getPrenom().equals(p.getPrenom()) && this.getVilleNaissance().equals(p.getVilleNaissance()) && this.getPaysNaissance().equals(p.getPaysNaissance());
+        return this.getNom().equals(p.getNom()) && this.getPrenom().equals(p.getPrenom()) && this.getVilleNaissance().equals(p.getVilleNaissance()) && this.getPaysNaissance().equals(p.getPaysNaissance());
     }
 
     public static void main(String[] args) {
