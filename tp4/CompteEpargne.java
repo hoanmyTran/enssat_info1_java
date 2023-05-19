@@ -1,6 +1,6 @@
 import java.util.Date;
 
-public class CompteEpargne extends CompteBancaire{
+public class CompteEpargne extends CompteBancaire implements ParametresCompteEpargne{
 
     private double remuneration;
     private boolean fiscalite;
@@ -28,8 +28,7 @@ public class CompteEpargne extends CompteBancaire{
     }
 
     public double calculInteret() {
-        //TODO
-        return 0;
+        return 5;
     }
 
     @Override
