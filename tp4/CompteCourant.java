@@ -21,8 +21,8 @@ public class CompteCourant extends CompteBancaire{
         return chequier;
     }
 
-    public Carte getCarte() {
-        return carte;
+    public String getCarte() {
+        return carte.getType();
     }
 
     public void setDecouvertAutorise(int decouvertAutorise) {
