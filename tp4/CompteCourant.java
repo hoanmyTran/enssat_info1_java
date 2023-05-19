@@ -63,7 +63,7 @@ public class CompteCourant extends CompteBancaire{
                 .append(" ")
                 .append(isChequier())
                 .append(" ")
-                .append(getCarte().getType())
+                .append(getCarte())
                 .toString();
     }
 
