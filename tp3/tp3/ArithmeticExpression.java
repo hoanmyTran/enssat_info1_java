@@ -9,6 +9,7 @@ public class ArithmeticExpression {
     /**
      * Verifies if the given arithmetic expression has balanced parentheses.
      *
+     * @return true if the expression is balanced, false otherwise
      * @param expression the arithmetic expression to verify
      * @throws IllegalArgumentException if the expression is not balanced
      */
