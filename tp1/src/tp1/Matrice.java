@@ -1,5 +1,9 @@
+package tp1;
+
 import java.util.Arrays;
 import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Matrice {
     private int[][] valeurs;
@@ -8,6 +12,15 @@ public class Matrice {
     public static final int MAX_VALUE = 9;
     public static final int MAX_RANDOM = 1000;
     public Matrice() {
+        this.valeurs = IntStream.range(0, ROWS_SIZE)
+                .mapToObj(i -> {
+                    int length = 1 + r.nextInt(MAX_VALUE);
+                    return IntStream.range(0, length)
+                            .map(j -> 1000 + r.nextInt(MAX_RANDOM))
+                            .toArray();
+                })
+                .toArray(int[][]::new);
+        /* autres méthodes
         this.valeurs = new int[ROWS_SIZE][];
         int i, j, length;
         for (i = 0; i < ROWS_SIZE; i++) {
@@ -16,7 +29,7 @@ public class Matrice {
             for (j = 0; j < length; j++) {
                 this.valeurs[i][j] = 1000 + r.nextInt(MAX_RANDOM);
             }
-        }
+        }*/
     }
 
     public int[][] getValeurs() {
@@ -35,6 +48,10 @@ public class Matrice {
 
     @Override
     public String toString() {
+        return Arrays.stream(this.valeurs)
+                .map(Arrays::toString)
+                .collect(Collectors.joining(", ", "[", "]"));
+        /* autres méthodes
         StringBuilder s = new StringBuilder("[");
         for (int i = 0; i < ROWS_SIZE; i++) {
             s.append(Arrays.toString(this.valeurs[i]));
@@ -45,6 +62,8 @@ public class Matrice {
             }
         }
         return s.toString();
+
+         */
     }
 
     public static void main(String[] args) {
