@@ -1,5 +1,7 @@
+package tp1;
+
 /**
- * Classe Cercle
+ * Classe tp1.Cercle
  * @author tran
  */
 public class Cercle {
