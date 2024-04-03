@@ -1,5 +1,9 @@
+package tp1;
+
 import java.util.Random;
 import java.util.Arrays;
+import java.util.stream.IntStream;
+
 public class Tableau {
     private int[] valeurs;
     public static final Random r = new Random();
@@ -7,10 +11,15 @@ public class Tableau {
     public static final int MAX_RANDOM = 1000;
 
     public Tableau() {
+        this.valeurs = IntStream.range(0, Tableau.ARRAY_SIZE)
+                .map(i -> 1000 + Tableau.r.nextInt(Tableau.MAX_RANDOM))
+                .toArray();
+        /*
+        Classique méthode pour initialiser un tableau d'entiers de taille ARRAY_SIZE
         this.valeurs = new int[Tableau.ARRAY_SIZE];
         for(int i = 0; i < Tableau.ARRAY_SIZE; i++) {
             this.valeurs[i] = 1000 + Tableau.r.nextInt(Tableau.MAX_RANDOM);
-        }
+        }*/
     }
     public Tableau(int[] valeurs) {
         this.valeurs = valeurs;
