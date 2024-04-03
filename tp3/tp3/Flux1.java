@@ -50,7 +50,11 @@ public class Flux1 {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Reads the content of a file and prints it to the console.
+     *
+     * @param filename the name of the file to be read
+     */
     private static void readAndPrintFileContent(String filename) {
         Path path = Paths.get(filename);
         try (Stream<String> lines = Files.lines(path)) {
