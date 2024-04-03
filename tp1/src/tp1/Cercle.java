@@ -40,7 +40,8 @@ public class Cercle {
      * @return aire
      */
     public float calculAire() {
-        return Cercle.PI*this.getRayon()*this.getRayon();
+        return (float) (Math.PI * Math.pow(this.getRayon(), 2));
+        // return Cercle.PI*this.getRayon()*this.getRayon(); // autre méthode
     }
 
     /**
@@ -48,7 +49,8 @@ public class Cercle {
      * @return circonférence
      */
     public float calculCirconference() {
-        return Cercle.PI*this.getRayon()*2;
+        return (float) (2 * Math.PI * this.getRayon());
+        // return Cercle.PI*this.getRayon()*2; // autre méthode
     }
 
     public static void main(String[] args) {
