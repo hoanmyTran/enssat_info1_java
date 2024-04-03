@@ -1,12 +1,13 @@
+package tp1;
+
 import java.text.Normalizer;
 
 public abstract class Palindrome {
 
     public static boolean verify(String s) {
-        String[] strArray = s.split(" ");
-        for(int i = 0; i < strArray.length; i++) {
-            StringBuilder str = new StringBuilder(strArray[i].toLowerCase());
-            if (str.toString().equals(str.reverse().toString())) {
+        for(String str : s.split(" ")) {
+            StringBuilder strBuilder = new StringBuilder(str.toLowerCase());
+            if (strBuilder.toString().equals(strBuilder.reverse().toString())) {
                 return true;
             }
         }
