@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 /**
  * This class provides a method to create a file with a name provided by the user and write to it.
@@ -50,11 +51,22 @@ public class Flux1 {
         }
     }
 
+    private static void readAndPrintFileContent(String filename) {
+        Path path = Paths.get(filename);
+        try (Stream<String> lines = Files.lines(path)) {
+            lines.forEach(System.out::println);
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file.");
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("Enter the filename:");
         try (Scanner scanner = new Scanner(System.in)) {
             String filename = scanner.nextLine();
             createAndWriteToFile(filename);
+            readAndPrintFileContent(filename);
         }
     }
 }
